@@ -1,9 +1,9 @@
 const Footer = () => {
     return (
-        <footer className=" p-10  ">
+        <footer className=" p-10  bg-neutral text-white">
      <div className="footer">
      <div>
-          <span className="footer-title">Services</span> 
+          <span className="footer-title ">Services</span> 
           <a className="link link-hover">Branding</a> 
           <a className="link link-hover">Design</a> 
           <a className="link link-hover">Marketing</a> 
@@ -33,7 +33,7 @@ const Footer = () => {
      </div>
 
   </div>
-  <p className="text-center mt-10 mb-4">Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+  <p className="text-center mt-10 mb-4">Copyright © 2023 - All right reserved by Nasirul islam chy</p>
       </footer>
     );
 };
