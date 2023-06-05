@@ -1,19 +1,21 @@
 import { format } from "date-fns";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AppointmentOption from "../appointment/appointmentOption/AppointmentOption";
 import AppointmenButtonModal from "../appointmenButtonModal/AppointmenButtonModal";
+import { useQuery } from "react-query";
+import Loading from "../../../shared/Loading/Loading";
 
 const AvailableAppointment = ({selected}) => {
-    const [appointmentOption, setAppointmentOption] = useState([]);
-    const [treatment, setTreatment] = useState(null)
-    useEffect(()=>{
-        fetch("services.json")
+    const [treatment, setTreatment] = useState(null);
+    const date = format(selected,"PP")
+    const {data:appointmentOption=[], refetch, isLoading} = useQuery({
+        queryKey: ['appointmentOption', date ],
+        queryFn:()=> fetch(`http://localhost:5000/appointmentOptions?date=${date}`)
         .then(res=>res.json())
-        .then(data=>{
-            
-            console.log(data)
-            setAppointmentOption(data)})
-    },[])
+    })
+if(isLoading){
+    return <Loading/>
+}
     return (
         <div className="my-20">
            <div className="text-center ">
@@ -28,7 +30,7 @@ const AvailableAppointment = ({selected}) => {
            <div>
             {
                treatment &&
-                <AppointmenButtonModal selected={selected} treatment={treatment}/>
+                <AppointmenButtonModal refetch={refetch} setTreatment={setTreatment} selected={selected} treatment={treatment}/>
             }
            </div>
         </div>

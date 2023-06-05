@@ -8,7 +8,7 @@ const Appointment = () => {
     return (
         <div>
             <AppointmentBanner selected={selected} setSelected={setSelected}/>
-            <AvailableAppointment  selected={selected}/>
+            <AvailableAppointment   selected={selected}/>
  
             </div>
     );

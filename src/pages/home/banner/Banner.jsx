@@ -1,6 +1,12 @@
+import { useContext } from 'react';
 import chair from '../../../assets/images/chair.png'
 import PrimaryButton from '../../../components/primaryButton/PrimaryButton';
+import { AuthContext } from '../../../contexts/AuthProvider';
 const Banner = () => {
+  const {loader} = useContext(AuthContext);
+  if(loader){
+    return <div>gfdgdf  </div>
+  }
     return (
         <div className="hero lg:py-52 bg-banner">
   <div className="hero-content flex-col lg:flex-row-reverse">
