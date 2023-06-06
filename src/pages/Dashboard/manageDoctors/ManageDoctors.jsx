@@ -10,7 +10,7 @@ const ManageDoctors = () => {
   const { data: doctors = [], isLoading, refetch } = useQuery({
     queryKey: "doctors",
     queryFn: () =>
-      fetch(`http://localhost:5000/doctors`, {
+      fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/doctors`, {
         headers: {
           autherization: `bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -19,7 +19,7 @@ const ManageDoctors = () => {
         .catch((error) => console.log(error)),
   });
   const handleDeleteDoctor=(doctor)=>{
-    fetch(`http://localhost:5000/doctors/${doctor._id}`,{
+    fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/doctors/${doctor._id}`,{
         method: "DELETE",
         headers: {
             autherization: `bearer ${localStorage.getItem("accessToken")}`
@@ -38,8 +38,8 @@ const ManageDoctors = () => {
   }
 
   return (
-    <div>
-      <h1 className="text-3xl">Manage Doctor: {doctors?.length}</h1>
+    <div className="p-5">
+      <h1 className="text-2xl font-bold">Manage Doctor: {doctors?.length}</h1>
 
       <div className="overflow-x-auto">
         <table className="table">
@@ -56,7 +56,7 @@ const ManageDoctors = () => {
           <tbody>
             {/* row 1 */}
             {doctors.map((doctor, i) => (
-              <tr key={doctor._id} className="bg-base-200">
+              <tr key={doctor._id} >
                 <th>{i + 1}</th>
                 <td>
                   <div className="avatar">

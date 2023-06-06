@@ -6,15 +6,15 @@ const AllUsers = () => {
     const {data:users=[], refetch} = useQuery({
         queryKey: 'users',
         queryFn: ()=> 
-        fetch('http://localhost:5000/users')
+        fetch('https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/users')
         .then(data=>data.json())
      
     })
     const handleMakeAdmin = (id)=>{
-        fetch(`http://localhost:5000/user/admin/${id}`,{
+        fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/user/admin/${id}`,{
             method: "PUT",
             headers: {
-                autherization: `bearer ${localStorage.getItem('c')}`
+                autherization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
         .then(res=>res.json())

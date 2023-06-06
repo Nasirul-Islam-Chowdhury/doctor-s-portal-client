@@ -27,7 +27,7 @@ const AddDoctor = () => {
                     img: imgData.data.image.url
                 }
              
-                fetch(`http://localhost:5000/doctors`,{
+                fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/doctors`,{
                     method: "POST",
                     headers:{
                         'content-type': 'application/json',
@@ -37,7 +37,7 @@ const AddDoctor = () => {
                 })
                 .then(res=>res.json())
                 .then(data=>{
-                    toast.success(`${data.name} is added successfully`)
+                    toast.success(`Dcotor ${doctor.name} is added successfully`)
                     console.log(data)})
                     navigate('/dashboard/manageDoctors')
             }
@@ -52,7 +52,7 @@ const AddDoctor = () => {
   const { data: specialties = [], isLoading } = useQuery({
     queryKey: "appointmentSpecialty",
     queryFn: () =>
-      fetch(`http://localhost:5000/appointmentSpecialty`).then((data) =>
+      fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/appointmentSpecialty`).then((data) =>
         data.json()
       ),
   });
@@ -63,7 +63,7 @@ if(isLoading){
 
   return (
     <div className="w-96 p-7 mx-auto">
-      <h2 className="text-4xl">Add a doctor</h2>
+      <h2 className="text-2xl font-bold text-center mb-4">Add a doctor</h2>
       <form onSubmit={handleSubmit(handleAddDoctor)}>
         <div className="form-control w-full mb-2">
           <label className="label">
@@ -108,12 +108,12 @@ if(isLoading){
             <span className="label-text">Photo</span>
           </label>
           <input
-            defaultValue=""
+           
             {...register("img", { required: "Photo is required" })}
             aria-invalid={errors.img ? "true" : "false"}
             type="file"
             placeholder="Type here"
-            className="input input-bordered w-full "
+            className="input input-bordered w-full p-2 "
           />
         </div>
         </div>

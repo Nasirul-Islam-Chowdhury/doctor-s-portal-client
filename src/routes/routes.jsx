@@ -11,15 +11,19 @@ import AllUsers from "../pages/Dashboard/allUsers/AllUsers";
 import AdminRoute from "./adminRoute/AdminRoute";
 import AddDoctor from "../pages/Dashboard/addDoctor/AddDoctor";
 import ManageDoctors from "../pages/Dashboard/manageDoctors/ManageDoctors";
+import Payment from "../pages/Dashboard/payment/Payment";
+import DisplayError from "../shared/DisplayError/DisplayError";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main/>,
+        errorElement: <DisplayError/>,
         children: [
             {
                 path: '/',
-                element: <Home/>
+                element: <Home/>,
+                errorElement: <DisplayError/>
             },
             {
                 path: '/login',
@@ -32,7 +36,7 @@ export const router = createBrowserRouter([
             
             {
                 path: '/appointment',
-                element: <Appointment/>
+                element: <PrivateRoute><Appointment/></PrivateRoute>
             }
         ]
     },
@@ -42,7 +46,8 @@ export const router = createBrowserRouter([
         children:[
             {
             path:"/dashboard",
-            element: <Myappointment/>
+            element: <Myappointment/>,
+            errorElement: <DisplayError/>
         },
             {
             path:"/dashboard/allusers",
@@ -55,6 +60,11 @@ export const router = createBrowserRouter([
             {
             path:"/dashboard/manageDoctors",
             element:<AdminRoute><ManageDoctors/></AdminRoute>,
+        },
+            {
+            path:"/dashboard/payment/:id",
+            element:<PrivateRoute><Payment/></PrivateRoute>,
+            loader: ({params})=> fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/bookings/${params.id}`)
         }
     ]
     },

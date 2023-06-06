@@ -8,7 +8,7 @@ import Testimonial from "../testomonial/Testimonial";
 
 const Home = () => {
     return (
-        <div className="mx-5 bg-white text-black">
+        <div className="lg:mx-5 bg-white text-black">
           <Banner/>
           <InfoCards/>
           <Services/>

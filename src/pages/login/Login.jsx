@@ -19,8 +19,6 @@ const Login = () => {
   const [userEmail, setUserEmail] = useState(" ")
   const {handleGooglesignin, resetPassword} = useContext(AuthContext);
 
-  
-
   const googleSignin = ()=>{
     handleGooglesignin()
     .then(res=>{
@@ -53,6 +51,7 @@ const handleResetPass = ()=>{
     setLoginError(" ")
     loginUSer(data.email, data.password)
     .then(result=>{
+      toast.success("User Logged in successfully")
       setloginUserEmail(data.email)
       console.log(result.user)})
     .catch(error=>{
@@ -79,7 +78,7 @@ const handleResetPass = ()=>{
             aria-invalid={errors.email ? "true" : "false"} 
               type="email"
               placeholder="Type here"
-              className="input input-bordered w-full "
+              className="input input-bordered w-full  text-black"
               onChange={(e)=>setUserEmail(e.target.value)}
             />
            
@@ -94,7 +93,7 @@ const handleResetPass = ()=>{
             defaultValue="" {...register("password" ,{ required: "Password is required",minLength:{value: 6, message: "Password must be 6 characters or more"} } )}
               type="password"
               placeholder="Type here"
-              className="input input-bordered w-full "
+              className="input input-bordered w-full text-black "
             />
              {errors.password && <p className="text-red-600 mt-1" role="alert">{errors.password?.message}</p>}
                <label className="label">
@@ -106,7 +105,7 @@ const handleResetPass = ()=>{
 </div>
           <input className="btn btn-neutral w-full" type="submit" value={"Log in"} />
         </form>
-        <p  className="text-center mt-3">New to Doctor's portal? <Link to="/signup">signup</Link></p>
+        <p  className="text-center text-black mt-3">New to Doctor's portal? <Link to="/signup">signup</Link></p>
       </div>
       <div className="divider">OR</div>
       <div>

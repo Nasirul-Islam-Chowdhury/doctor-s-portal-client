@@ -28,7 +28,7 @@ const Signup = () => {
       const {createUser, handleUpdateProfile} = useContext(AuthContext)
       const saveuser = (email, name)=>{
         const users = {email, name}
-        fetch('http://localhost:5000/users',{
+        fetch('https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/users',{
           method: "POST",
           headers: {
             "content-type":"application/json"
@@ -68,10 +68,10 @@ const Signup = () => {
           <div className="w-96 p-5">
             <h2 className="text-4xl text-center mb-10">Signup</h2>
     
-          <div>
+          <div className="text-black">
             <form onSubmit={handleSubmit(handleSignup)}>
         
-              <div className="form-control w-full mb-2">
+              <div className="form-control w-full mb-2 ">
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
@@ -107,6 +107,7 @@ const Signup = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
+                 className="input input-bordered w-full "
                 defaultValue="" {...register("password" ,
                 { required: "Password is required",
                 minLength:{value: 6, message: "Password must be 6 characters or more"},
@@ -128,11 +129,11 @@ const Signup = () => {
     </div>
               <input className="btn btn-neutral w-full" type="submit" value={"Sign up"} />
             </form>
-            <p  className="text-center mt-3">New to Doctor's portal? <Link to="/login">Login</Link></p>
+            <p  className="text-center text-black mt-3">New to Doctor's portal? <Link to="/login">Login</Link></p>
           </div>
           <div className="divider">OR</div>
           <div>
-            <button onClick={googleSignin} className="btn btn-outline w-full">
+            <button onClick={googleSignin} className="btn btn-secondary w-full">
               Continue with google
             </button>
           </div>

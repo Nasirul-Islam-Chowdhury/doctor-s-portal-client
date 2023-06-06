@@ -2,7 +2,7 @@ import appiontment from '../../../assets/images/appointment.png'
 const Contact = () => {
     return (
 <section style={{background: `url(${appiontment})`}} className="my-20 bg-cover py-20 w-full mx-auto">
-    <div className='lg:w-2/5 mx-auto p-5'>
+    <div className='lg:w-2/5 mx-auto p-10'>
         <div className="text-center mb-10">
             <h3 className="text-xl font-bold text-secondary">Contact Us</h3>
             <h1 className="text-4xl mt-4 text-white">Stay connected with us</h1>

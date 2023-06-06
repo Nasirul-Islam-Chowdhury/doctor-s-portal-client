@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 
 const AppointmenButtonModal = ({ treatment, selected,setTreatment,refetch }) => {
   const {user} = useContext(AuthContext)
-  const { name: treatmentName, slots } = treatment;
+  const { name: treatmentName, slots, price } = treatment;
   const date = format(selected, "PP");
   const handleAppointment = (e)=>{
     e.preventDefault();
@@ -20,9 +20,10 @@ const AppointmenButtonModal = ({ treatment, selected,setTreatment,refetch }) => 
       selectedDate:date, 
       slot, 
       email, 
-      phone
+      phone,
+      price
     }
-    fetch("http://localhost:5000/bookings",{
+    fetch("https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/bookings",{
       method: "POST",
       headers: {
         "content-type": "application/json"
