@@ -23,7 +23,7 @@ const Login = () => {
     handleGooglesignin()
     .then(res=>{
       toast("User Logged in Succesfully")
-      console.log(res)})
+      console.log(res.user)})
     .catch(err=>console.log(err))
   }
 const handleResetPass = ()=>{
@@ -39,8 +39,6 @@ const handleResetPass = ()=>{
   }
  
 }
-
-
   const {
     register,
     handleSubmit,
@@ -107,7 +105,7 @@ const handleResetPass = ()=>{
         </form>
         <p  className="text-center text-black mt-3">New to Doctor's portal? <Link to="/signup">signup</Link></p>
       </div>
-      <div className="divider">OR</div>
+      <div className="divider text-black">OR</div>
       <div>
         <button onClick={googleSignin} className="btn btn-outline w-full">
           Continue with google

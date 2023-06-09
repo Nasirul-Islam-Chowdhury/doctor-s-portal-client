@@ -5,7 +5,7 @@ const useAdmin  =(email)=>{
     const [isAdminloading, setisAdminLoding] = useState(true)
     useEffect(()=>{
         if(email){
-            fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/users/admin/${email}`)
+            fetch(`https://doctoors-portal-server-production.up.railway.app/users/admin/${email}`)
             .then(res=>res.json())
             .then(data=>{
                 setisAdminLoding(false)

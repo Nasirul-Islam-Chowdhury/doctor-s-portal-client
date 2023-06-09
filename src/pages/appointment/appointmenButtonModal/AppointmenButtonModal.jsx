@@ -23,7 +23,7 @@ const AppointmenButtonModal = ({ treatment, selected,setTreatment,refetch }) => 
       phone,
       price
     }
-    fetch("https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/bookings",{
+    fetch("https://doctoors-portal-server-production.up.railway.app/bookings",{
       method: "POST",
       headers: {
         "content-type": "application/json"

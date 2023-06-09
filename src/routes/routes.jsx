@@ -64,7 +64,7 @@ export const router = createBrowserRouter([
             {
             path:"/dashboard/payment/:id",
             element:<PrivateRoute><Payment/></PrivateRoute>,
-            loader: ({params})=> fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/bookings/${params.id}`)
+            loader: ({params})=> fetch(`https://doctoors-portal-server-production.up.railway.app/bookings/${params.id}`)
         }
     ]
     },

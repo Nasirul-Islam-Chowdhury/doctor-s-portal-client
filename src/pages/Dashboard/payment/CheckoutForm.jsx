@@ -14,7 +14,7 @@ const CheckoutForm = ({booking}) => {
 
     useEffect(() => {
       // Create PaymentIntent as soon as the page loads
-      fetch("https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/create-payment-intent", {
+      fetch("https://doctoors-portal-server-production.up.railway.app/create-payment-intent", {
         method: "POST",
         headers: {
            "Content-Type": "application/json" ,
@@ -76,7 +76,7 @@ const payment ={
 price,
 transactionId: paymentIntent.id,email, bookingId: _id
 }
-          fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/payments`,{
+          fetch(`https://doctoors-portal-server-production.up.railway.app/payments`,{
             method: "POST",
             headers: {
               "content-type" : "application/json",

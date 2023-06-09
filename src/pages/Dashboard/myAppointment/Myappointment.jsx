@@ -9,7 +9,7 @@ const Myappointment = () => {
   const { data: bookings = [], isLoading } = useQuery({
     queryKey: ["bookings", user?.email],
     queryFn: () =>
-      fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/bookings?email=${user?.email}`, {
+      fetch(`https://doctoors-portal-server-production.up.railway.app/bookings?email=${user?.email}`, {
         headers: {
           autherization: `bearer ${localStorage.getItem("accessToken")}`,
         },

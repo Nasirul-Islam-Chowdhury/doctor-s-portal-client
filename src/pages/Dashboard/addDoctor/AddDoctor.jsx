@@ -27,7 +27,7 @@ const AddDoctor = () => {
                     img: imgData.data.image.url
                 }
              
-                fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/doctors`,{
+                fetch(`https://doctoors-portal-server-production.up.railway.app/doctors`,{
                     method: "POST",
                     headers:{
                         'content-type': 'application/json',
@@ -52,7 +52,7 @@ const AddDoctor = () => {
   const { data: specialties = [], isLoading } = useQuery({
     queryKey: "appointmentSpecialty",
     queryFn: () =>
-      fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/appointmentSpecialty`).then((data) =>
+      fetch(`https://doctoors-portal-server-production.up.railway.app/appointmentSpecialty`).then((data) =>
         data.json()
       ),
   });

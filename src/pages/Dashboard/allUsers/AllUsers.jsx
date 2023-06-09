@@ -6,12 +6,24 @@ const AllUsers = () => {
     const {data:users=[], refetch} = useQuery({
         queryKey: 'users',
         queryFn: ()=> 
-        fetch('https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/users')
+        fetch('https://doctoors-portal-server-production.up.railway.app/users')
         .then(data=>data.json())
      
     })
+    const handleDelte = (id)=>{
+        fetch(`https://doctoors-portal-server-production.up.railway.app/user/${id}`,{
+            method: "DELETE",
+            headers:{
+                autherization: `bearer ${localStorage.getItem("accessToken")}`
+            }
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            refetch()
+            console.log(data)})
+    }
     const handleMakeAdmin = (id)=>{
-        fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/user/admin/${id}`,{
+        fetch(`https://doctoors-portal-server-production.up.railway.app/user/admin/${id}`,{
             method: "PUT",
             headers: {
                 autherization: `bearer ${localStorage.getItem('accessToken')}`
@@ -48,7 +60,7 @@ const AllUsers = () => {
                 <td>{user.email}</td>
                 
                 <td>{ user?.role !== "admin" &&  <button onClick={()=>handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>
-                <td><button className='btn btn-danger btn-xs'>Delete</button></td>
+                <td><button className='btn btn-danger btn-xs' onClick={()=>handleDelte(user._id)}>Delete</button></td>
             </tr>)
            }
           </tbody>

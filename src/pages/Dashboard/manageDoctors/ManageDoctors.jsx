@@ -10,7 +10,7 @@ const ManageDoctors = () => {
   const { data: doctors = [], isLoading, refetch } = useQuery({
     queryKey: "doctors",
     queryFn: () =>
-      fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/doctors`, {
+      fetch(`https://doctoors-portal-server-production.up.railway.app/doctors`, {
         headers: {
           autherization: `bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -19,7 +19,7 @@ const ManageDoctors = () => {
         .catch((error) => console.log(error)),
   });
   const handleDeleteDoctor=(doctor)=>{
-    fetch(`https://doctor-s-portal-server-jlvo7vylc-nicchy123.vercel.app/doctors/${doctor._id}`,{
+    fetch(`https://doctoors-portal-server-production.up.railway.app/doctors/${doctor._id}`,{
         method: "DELETE",
         headers: {
             autherization: `bearer ${localStorage.getItem("accessToken")}`
